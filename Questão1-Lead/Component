@@ -1,0 +1,21 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <div class='slds-box slds-theme_default slds-clearfix'>
+        <h1 class='slds-align_absolute-center slds-text-heading_large'>Criar um novo Lead: Aura</h1>
+        <lightning:recordEditForm aura:id="recordEditForm"
+                                  objectApiName="Lead"
+                                  onsuccess="{!c.handleSuccess}">
+            <lightning:messages />
+            <lightning:inputField aura:id="field" fieldName="Name" />
+            <lightning:inputField aura:id="field" fieldName="Company" />
+            <lightning:inputField aura:id="field" fieldName="Status" />
+            
+            <lightning:button class="slds-float_right slds-m-top_small" variant="destructive" label="Clear" onclick="{!c.handleReset}" />
+            <lightning:button class="slds-float_right slds-m-top_small" type="submit" label="Create New" />
+
+
+        </lightning:recordEditForm>
+        
+    </div>
+    
+</aura:component>
