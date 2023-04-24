@@ -1,0 +1,8 @@
+public class AccountC {
+@AuraEnabled
+    Public static List<Account> getAccountsNR(){
+        return[Select Name, Negociacao__c, Rating From Account 
+               Where Rating = 'Hot'
+              Order by createdDate Desc Limit 5];
+}
+}   
