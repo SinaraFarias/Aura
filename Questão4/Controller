@@ -1,0 +1,50 @@
+({
+	handleSuccess : function(component, event, helper) {
+		helper.handleSucessHelper(component);
+	},      
+        
+        
+    var registroCriado = event.getParams();
+        //getParams = recuperando um conjunto de informações do evento.
+        console.log(registroCriado.response.id);
+        //Trazer para o contexto minha função, do component que está recebendo ID
+        
+        var navService = component.find("navService");
+
+   //Pra qual lugar você que que eu direcione o usuário?
+   //Montar um objeto de referência, com os dados de direcionamento da página = o objeto que criamos se chama pageReference
+   //assim o usuári vai cair sempre na página certa
+        var pageReference = {
+            "type": 'standard_recordPage',
+            "attributes": {
+            "recordID":registroCriado.response.id,
+            "actionName": "view",
+            "objectApiName":"Materialcomprainterna__c"
+            
+            
+        }
+        };
+           console.log(pagReference);
+        
+            //Setar o atributo que a gente chamou lá no aura ch amado de pageReference, para o nosso objeto montado acima
+            
+            component.set("v.pageReference", pageReference)
+            
+            //pegar as informações de referencia do component
+            
+            var redirect = component.get("v.pageReference");
+            
+            //ordernar que o redirecionamento seja via navigation.
+            
+            navService.navigate(redirect);            
+            
+    },
+        
+        handleReset : function(component, event, helper) {
+        	helper.handleResetHelper(component);
+        
+        });
+        
+        
+ }
+})
